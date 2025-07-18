@@ -170,7 +170,7 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
                         }.runTaskTimer(this, 0L, 1L);
                     }
 
-                    if (this.teleportSoundEnabled) {
+                    if (this.teleportSoundEnabled && player.hasPermission("pep.use")) {
                         player.getWorld().playSound(
                                 locFrom,
                                 this.teleportSound,
