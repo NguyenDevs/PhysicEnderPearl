@@ -1,0 +1,19 @@
+bounciness: 0.85
+vertical-bounciness: 0.7
+max-bounces: 5
+friction: 0.98
+min-velocity-threshold: 0.03
+bounce-sound:
+  enabled: true
+  name: ENTITY_ENDER_EYE_DEATH
+  volume: 1.0
+  pitch: 1.0
+teleport-particle:
+  enabled: true
+  count: 16
+teleport-sound:
+  enabled: true
+  name: BLOCK_SCULK_CATALYST_BLOOM
+  volume: 1.0
+  pitch: 1.0
+disabled-worlds: []
