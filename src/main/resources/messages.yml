@@ -1,4 +1,4 @@
 messages:
-  reload-success: "§aCấu hình PhysicEnderPearl đã được tải lại thành công!"
-  no-permission: "§cBạn không có quyền thực hiện lệnh này!"
-  usage: "§cSử dụng: /%s reload"
+  reload-success: "§aPhysicEnderPearl reload successfully!"
+  no-permission: "§cYou don't have permission to do this!"
+  usage: "§cUse: /%s reload"

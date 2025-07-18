@@ -32,14 +32,14 @@ public class PEPCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("physicenderpearl.reload")) {
-                sender.sendMessage(messages.getString("messages.no-permission", "§cBạn không có quyền thực hiện lệnh này!"));
+                sender.sendMessage(messages.getString("messages.no-permission", "§cYou don't have permission to do this!"));
                 return true;
             }
             base.reload();
-            sender.sendMessage(messages.getString("messages.reload-success", "§aCấu hình PhysicEnderPearl đã được tải lại thành công!"));
+            sender.sendMessage(messages.getString("messages.reload-success", "§aPhysicEnderPearl reload successfully!"));
             return true;
         }
-        sender.sendMessage(String.format(messages.getString("messages.usage", "§cSử dụng: /%s reload"), label));
+        sender.sendMessage(String.format(messages.getString("messages.usage", "§cUse: /%s reload"), label));
         return false;
     }
 

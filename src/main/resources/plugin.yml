@@ -4,12 +4,12 @@ main: com.NguyenDevs.physicEnderPearl.PhysicEnderPearl
 api-version: '1.21'
 commands:
   physicenderpearl:
-    description: Quản lý plugin PhysicEnderPearl
+    description: PhysicEnderPearl Manage
     usage: /<command> [reload]
 permissions:
   physicenderpearl.enabled:
-    description: Cho phép sử dụng EnderPearl nảy
+    description: Allow to use physic enderpearl logic
     default: true
   physicenderpearl.reload:
-    description: Cho phép tải lại cấu hình plugin
+    description: Reload plugin
     default: op
