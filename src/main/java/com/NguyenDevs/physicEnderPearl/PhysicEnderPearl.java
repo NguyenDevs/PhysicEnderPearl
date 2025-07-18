@@ -43,6 +43,7 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
     private Sound teleportSound;
     private float teleportSoundVolume;
     private float teleportSoundPitch;
+    private Particle teleportParticle;
 
     @Override
     public void onEnable() {
@@ -82,6 +83,21 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
         this.teleportParticleCount = Math.max(this.getConfig().getInt("teleport-particle.count", 16), 1);
         this.teleportSoundEnabled = this.getConfig().getBoolean("teleport-sound.enabled", true);
         this.teleportSound = Sound.ENTITY_ENDERMAN_TELEPORT;
+
+        String particleType = this.getConfig().getString("teleport-particle.type", "SCULK_SOUL");
+        this.teleportParticle = Particle.SCULK_SOUL;
+
+        try {
+            this.teleportParticle = Particle.valueOf(particleType.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            Bukkit.getLogger().warning("[PhysicEnderPearl] '" + particleType + "' is not a valid particle type! Using default: SCULK_SOUL");
+            try {
+                this.teleportParticle = Particle.valueOf("SCULK_SOUL");
+            } catch (IllegalArgumentException fallbackException) {
+                this.teleportParticle = Particle.PORTAL;
+                Bukkit.getLogger().warning("[PhysicEnderPearl] SCULK_SOUL not available, using PORTAL instead");
+            }
+        }
 
         try {
             String teleportSoundName = this.getConfig().getString("teleport-sound.name", "ENTITY_ENDERMAN_TELEPORT");
@@ -123,8 +139,10 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
                                     double x = Math.cos(angle) * 1.0;
                                     double z = Math.sin(angle) * 1.0;
                                     double yOffset = 2.1 - (1.9 * i / teleportParticleCount);
+
+                                    // Sử dụng teleportParticle thay vì hardcode SCULK_SOUL
                                     player.getWorld().spawnParticle(
-                                            Particle.SCULK_SOUL,
+                                            teleportParticle,
                                             locFrom.clone().add(x, yOffset, z),
                                             2,
                                             0.1, 0.1, 0.1,
@@ -142,8 +160,9 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
                                     double z = Math.sin(angle) * 1.0;
                                     double yOffset = 0.2 + (1.9 * i / teleportParticleCount);
 
+                                    // Sử dụng teleportParticle thay vì hardcode SCULK_SOUL
                                     player.getWorld().spawnParticle(
-                                            Particle.SCULK_SOUL,
+                                            teleportParticle,
                                             locTo.clone().add(x, yOffset, z),
                                             2,
                                             0.1, 0.1, 0.1,
@@ -157,13 +176,13 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
 
                     if (this.teleportSoundEnabled) {
                         player.getWorld().playSound(
-                                locFrom, // Sound at source position
+                                locFrom,
                                 this.teleportSound,
                                 this.teleportSoundVolume,
                                 this.teleportSoundPitch
                         );
                         player.getWorld().playSound(
-                                locTo, // Sound at destination position
+                                locTo,
                                 this.teleportSound,
                                 this.teleportSoundVolume,
                                 this.teleportSoundPitch

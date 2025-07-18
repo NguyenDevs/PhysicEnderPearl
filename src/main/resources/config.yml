@@ -10,6 +10,7 @@ bounce-sound:
   pitch: 1.0
 teleport-particle:
   enabled: true
+  type: SCULK_SOUL
   count: 16
 teleport-sound:
   enabled: true

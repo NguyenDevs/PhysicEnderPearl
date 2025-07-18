@@ -1,7 +1,7 @@
 name: PhysicEnderPearl
 version: '1.0.0'
 main: com.NguyenDevs.physicEnderPearl.PhysicEnderPearl
-api-version: '1.21'
+api-version: '1.19'
 commands:
   physicenderpearl:
     description: PhysicEnderPearl Manage
