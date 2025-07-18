@@ -122,7 +122,7 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
                     Location locTo = event.getTo();
                     Location locFrom = event.getFrom();
 
-                    if (this.teleportParticleEnabled) {
+                    if (this.teleportParticleEnabled  && player.hasPermission("pep.use")) {
                         new BukkitRunnable() {
                             int phase = 1;
                             int i = 0;
@@ -139,8 +139,6 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
                                     double x = Math.cos(angle) * 1.0;
                                     double z = Math.sin(angle) * 1.0;
                                     double yOffset = 2.1 - (1.9 * i / teleportParticleCount);
-
-                                    // Sử dụng teleportParticle thay vì hardcode SCULK_SOUL
                                     player.getWorld().spawnParticle(
                                             teleportParticle,
                                             locFrom.clone().add(x, yOffset, z),
@@ -159,8 +157,6 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
                                     double x = Math.cos(angle) * 1.0;
                                     double z = Math.sin(angle) * 1.0;
                                     double yOffset = 0.2 + (1.9 * i / teleportParticleCount);
-
-                                    // Sử dụng teleportParticle thay vì hardcode SCULK_SOUL
                                     player.getWorld().spawnParticle(
                                             teleportParticle,
                                             locTo.clone().add(x, yOffset, z),
@@ -197,7 +193,7 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
         if (event.getEntityType() == EntityType.ENDER_PEARL && event.getEntity().getShooter() instanceof Player) {
             Player p = (Player) event.getEntity().getShooter();
-            if (!p.hasPermission("bouncyenderpearls.enabled") || this.disabledWorlds.contains(p.getWorld().getName())) {
+            if (!p.hasPermission("pep.use") || this.disabledWorlds.contains(p.getWorld().getName())) {
                 this.allowed.add(p.getUniqueId());
                 event.getEntity().getPersistentDataContainer().set(this.bounces, PersistentDataType.INTEGER, this.maxBounces + 1);
             } else {

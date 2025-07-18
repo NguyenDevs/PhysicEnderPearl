@@ -31,7 +31,7 @@ public class PEPCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("physicenderpearl.reload")) {
+            if (!sender.hasPermission("pep.reload")) {
                 sender.sendMessage(messages.getString("messages.no-permission", "§cYou don't have permission to do this!"));
                 return true;
             }
@@ -45,7 +45,7 @@ public class PEPCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length == 1 && sender.hasPermission("physicenderpearl.reload")) {
+        if (args.length == 1 && sender.hasPermission("pep.reload")) {
             return List.of("reload");
         }
         return List.of();

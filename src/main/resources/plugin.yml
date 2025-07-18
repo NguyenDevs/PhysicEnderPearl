@@ -6,10 +6,11 @@ commands:
   physicenderpearl:
     description: PhysicEnderPearl Manage
     usage: /<command> [reload]
+    aliases: [pep]
 permissions:
-  physicenderpearl.enabled:
+  pep.use:
     description: Allow to use physic enderpearl logic
     default: true
-  physicenderpearl.reload:
+  pep.reload:
     description: Reload plugin
     default: op
