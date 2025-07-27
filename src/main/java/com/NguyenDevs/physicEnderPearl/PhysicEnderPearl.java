@@ -1,10 +1,6 @@
 package com.NguyenDevs.physicEnderPearl;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -53,6 +49,8 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
         this.getCommand("physicenderpearl").setExecutor(pepCommand);
         this.getCommand("physicenderpearl").setTabCompleter(pepCommand);
         this.reload();
+        printPEPLogo();
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a[&2PhysicEnderPearl&a] Plugin enabled successfully."));
     }
 
     void reload() {
@@ -259,5 +257,24 @@ public class PhysicEnderPearl extends JavaPlugin implements Listener {
             }
         }
         old.remove();
+    }
+    public void printPEPLogo() {
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a   ██████╗ ███████╗██████╗ "));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a   ██╔══██╗██╔════╝██╔══██╗"));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a   ██████╔╝█████╗  ██████╔╝"));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a   ██╔═══╝ ██╔══╝  ██╔═══╝ "));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a   ██║     ███████╗██║     "));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&a   ╚═╝     ╚══════╝╚═╝     "));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&2     Physic Ender Pearl"));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6     Version " + getDescription().getVersion()));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Development by NguyenDevs"));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+    }
+    @Override
+    public void onDisable() {
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&',"&a[&2PhysicEnderPearl&a] &cPlugin disabled!"));
+
     }
 }

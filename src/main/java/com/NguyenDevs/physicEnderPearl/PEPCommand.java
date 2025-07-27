@@ -1,5 +1,6 @@
 package com.NguyenDevs.physicEnderPearl;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,16 +33,17 @@ public class PEPCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("pep.reload")) {
-                sender.sendMessage(messages.getString("messages.no-permission", "§cYou don't have permission to do this!"));
+                sender.sendMessage(translateColors(messages.getString("messages.prefix","&a[&2PhysicEnderPearl&a]") + " " + messages.getString("messages.no-permission", "&cYou don't have permission to do this!")));
                 return true;
             }
             base.reload();
-            sender.sendMessage(messages.getString("messages.reload-success", "§aPhysicEnderPearl reload successfully!"));
+            sender.sendMessage(translateColors(messages.getString("messages.prefix","&a[&2PhysicEnderPearl&a]") + " " + messages.getString("messages.reload-success", "&7PhysicEnderPearl reload successfully!")));
             return true;
         }
-        sender.sendMessage(String.format(messages.getString("messages.usage", "§cUse: /%s reload"), label));
+        sender.sendMessage(messages.getString("messages.prefix","&a[&2PhysicEnderPearl&a]") + " " + translateColors(String.format(messages.getString("messages.usage", "&cUse: /%s reload"), label)));
         return false;
     }
+
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
@@ -50,4 +52,8 @@ public class PEPCommand implements CommandExecutor, TabCompleter {
         }
         return List.of();
     }
+    private String translateColors(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message);
+    }
+
 }

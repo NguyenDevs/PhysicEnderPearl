@@ -1,20 +1,100 @@
+# ========================================
+# BOUNCE PHYSICS SETTINGS
+# ========================================
+
+# Controls how much velocity is retained when bouncing off surfaces
+# Higher values = more bouncy, Lower values = less bouncy
+# Range: 0.1 - 1.0 (Default: 0.85)
 bounciness: 0.85
+
+# Controls how much velocity is retained when bouncing off vertical surfaces (walls/ceilings)
+# This is typically lower than horizontal bounciness for more realistic physics
+# Range: 0.1 - 1.0 (Default: 0.7)
 vertical-bounciness: 0.7
+
+# Maximum number of times an ender pearl can bounce before teleporting the player
+# Higher values allow more bounces before teleportation occurs
+# Minimum: 1 (Default: 5)
 max-bounces: 5
+
+# Friction applied to the ender pearl with each bounce, reducing velocity over time
+# Higher values = less friction (more bounces), Lower values = more friction (fewer bounces)
+# Range: 0.1 - 1.0 (Default: 0.98)
 friction: 0.98
+
+# Minimum velocity threshold - if the pearl's velocity drops below this value, it will teleport
+# This prevents pearls from bouncing indefinitely at very low speeds
+# Minimum: 0.01 (Default: 0.03)
 min-velocity-threshold: 0.03
+
+# ========================================
+# SOUND EFFECTS
+# ========================================
+
+# Sound played when the ender pearl bounces off a surface
 bounce-sound:
+  # Whether to play bounce sounds
   enabled: true
+  
+  # Sound name to play on bounce (must be a valid Bukkit Sound enum)
+  # See: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
   name: ENTITY_ENDER_EYE_DEATH
+  
+  # Volume of the bounce sound (0.0 = silent, higher values = louder)
+  # Minimum: 0.0 (Default: 1.0)
   volume: 1.0
+  
+  # Pitch of the bounce sound (affects tone/frequency)
+  # Minimum: 0.1 (Default: 1.0)
   pitch: 1.0
-teleport-particle:
-  enabled: true
-  type: SCULK_SOUL
-  count: 16
+
+# Sound played when the player teleports via ender pearl
 teleport-sound:
+  # Whether to play teleport sounds
   enabled: true
+  
+  # Sound name to play on teleportation (must be a valid Bukkit Sound enum)
   name: BLOCK_SCULK_CATALYST_BLOOM
+  
+  # Volume of the teleport sound (0.0 = silent, higher values = louder)
+  # Minimum: 0.0 (Default: 1.0)
   volume: 1.0
+  
+  # Pitch of the teleport sound (affects tone/frequency)
+  # Minimum: 0.1 (Default: 1.0)
   pitch: 1.0
+
+# ========================================
+# VISUAL EFFECTS
+# ========================================
+
+# Particle effects displayed when the player teleports
+teleport-particle:
+  # Whether to show teleport particles
+  enabled: true
+  
+  # Type of particle to display (must be a valid Bukkit Particle enum)
+  # See: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+  # Falls back to PORTAL if SCULK_SOUL is not available
+  type: SCULK_SOUL
+  
+  # Number of particles to spawn in the teleport effect animation
+  # Higher values create more dense particle effects
+  # Minimum: 1 (Default: 16)
+  count: 16
+
+# ========================================
+# WORLD RESTRICTIONS
+# ========================================
+
+# List of world names where the physics ender pearl effect is disabled
+# In these worlds, ender pearls will behave normally (immediate teleportation)
+# Example: ["world_nether", "world_the_end", "pvp_arena"]
 disabled-worlds: []
+
+# ========================================
+# PERMISSIONS
+# ========================================
+# pep.use - Required permission for players to use physics ender pearls
+#          - Players without this permission will have normal ender pearl behavior
+#          - Players with this permission get the bouncing physics effect

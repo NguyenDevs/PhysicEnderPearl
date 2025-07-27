@@ -1,4 +1,5 @@
 messages:
-  reload-success: "§3[PEP] §7PhysicEnderPearl reload successfully!"
-  no-permission: "§3[PEP] §cYou don't have permission to do this!"
-  usage: "§3[PEP] §cUse: /%s reload"
+  prefix: "&a[&2PhysicEnderPearl&a]"
+  reload-success: "&7PhysicEnderPearl reload successfully!"
+  no-permission: "&cYou don't have permission to do this!"
+  usage: "&cUse: /%s reload"
