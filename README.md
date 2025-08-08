@@ -12,6 +12,6 @@ Fully customizable to suit your server's difficulty and style.
 
 ## Commands
 - `/pep reload` - reloads the configuration file.
-
+## Permissions
 - `pep.use` allow players to use PEP logic
 - `pep.reload` reload plugin
