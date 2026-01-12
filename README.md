@@ -10,8 +10,6 @@ Perfect for servers that want more skill-based teleportation, PvP intensity, or 
 
 Fully customizable — tune the difficulty exactly to your server's style!
 
-![image](https://github.com/user-attachments/assets/31b13b0c-d8e2-4634-813e-280ae6d081d7)
-
 ## Features
 - **Realistic Bounce Physics**  
   Ender Pearls now bounce off surfaces with realistic momentum — miss your shot and watch it ricochet!
@@ -24,6 +22,8 @@ Fully customizable — tune the difficulty exactly to your server's style!
 
 - **Custom Sounds**  
   Replace or enhance the default teleport sound with your own immersive audio — make every throw feel epic!
+
+![image](https://github.com/user-attachments/assets/31b13b0c-d8e2-4634-813e-280ae6d081d7)
 
 ## Commands
 - `/pep reload`  
